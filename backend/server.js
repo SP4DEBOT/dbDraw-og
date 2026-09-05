@@ -1,6 +1,6 @@
 import express from "express";
-import path from "path";
-import { fileURLToPath } from "url";
+//import path from "path";
+//import { fileURLToPath } from "url";
 import dotenv from "dotenv";
 
 import { connectDB } from "./config/db.js";
@@ -111,30 +111,22 @@ async function startServer() {
     await connectDB();
 
     if (process.env.NODE_ENV !== "production") {
-      const { createServer: createViteServer } = await import("vite");
+    const { createServer: createViteServer } = await import("vite");
 
-      const vite = await createViteServer({
-        root: frontendDir,
-        server: {
-          middlewareMode: true,
-        },
-        appType: "spa",
-        configFile: path.resolve(
-          frontendDir,
-          "vite.config.js"
-        ),
-      });
+    const vite = await createViteServer({
+    root: frontendDir,
+    server: {
+      middlewareMode: true,
+    },
+    appType: "spa",
+    configFile: path.resolve(
+      frontendDir,
+      "vite.config.js"
+    ),
+  });
 
-      app.use(vite.middlewares);
-    } else {
-      const distPath = path.resolve(rootDir, "dist");
-
-      app.use(express.static(distPath));
-
-      app.get("*", (_req, res) => {
-        res.sendFile(path.join(distPath, "index.html"));
-      });
-    }
+  app.use(vite.middlewares);
+  }
 
     // Global error handler
     app.use((err, _req, res, _next) => {

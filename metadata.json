@@ -1,0 +1,6 @@
+{
+  "name": "dbDraw",
+  "description": "dbDraw – Visual drag-and-drop database schema designer and code generator with AI assistance, React Flow canvas, and role-based access control.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

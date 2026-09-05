@@ -83,6 +83,12 @@ app.use((req, res, next) => {
 // --------------------------------------------------
 // API ROUTES
 // --------------------------------------------------
+app.get("/test", (req, res) => {
+  res.json({
+    message: "DbDraw server is working",
+    port: PORT
+  });
+});
 
 app.use("/api/health", healthRoutes);
 app.use("/api/ai", aiRoutes);
